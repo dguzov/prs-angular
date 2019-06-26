@@ -1,0 +1,43 @@
+<app-menu></app-menu>
+<div class='component-content'>
+    <div class='lefhalf'>
+        <span class="component-title">[{{title}}]</span>
+        <span><a routerLink='/pr/create'>
+        <img id='createnew' width='20' height='20' src='../../../../assets/add-icon.png' title='Add New'></a>
+    </span>
+    </div>
+</div>
+<p *ngIf='!purchaseRequests'>Loading...</p>
+<table class="table table-sm" *ngIf='purchaseRequests'>
+    <tr>
+        <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold" (click)="sortBy(id)"><u>Id</u></a></th>
+        <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>User Name</u></a></th>
+        <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Description</u></a></th>
+        <!-- <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Justification</u></a></th>
+        <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Date Needed</u></a></th>
+        <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Delivery Mode</u></a></th> -->
+        <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Status</u></a></th>
+        <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Total</u></a></th>
+        <!-- <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Submitted Date</u></a></th>
+        <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Reason For Rejection</u></a></th> -->
+        <th class="table-secondary btn-link">Action</th>
+    </tr>
+    <tr *ngFor='let purchaseRequest of purchaseRequests'>
+        <td>{{purchaseRequest.id}}</td>
+        <td>{{purchaseRequest.user.userName}}</td>
+        <td>{{purchaseRequest.description}}</td>
+        <!-- <td>{{purchaseRequest.justification}}</td>
+        <td>{{purchaseRequest.dateNeeded}}</td>
+        <td>{{purchaseRequest.deliveryMode}}</td> -->
+        <td>{{purchaseRequest.status}}</td>
+        <td>{{purchaseRequest.total}}</td>
+        <!-- <td>{{purchaseRequest.submittedDate}}</td>
+        <td>{{purchaseRequest.reasonForRejection}}</td> -->
+        <td class='actions'>
+            <a routerLink='/pr/detail/{{purchaseRequest.id}}'><img src='assets/details.png' width='20' height='20' title='Detail'></a>
+            <a routerLink='/pr/edit/{{purchaseRequest.id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
+            <a routerLink='/pr/lines/{{purchaseRequest.id}}'><img src='assets/lines.png' width='20' height='20' title='Lines'></a>
+        </td>
+    </tr>
+
+</table>

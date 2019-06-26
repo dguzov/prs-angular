@@ -1,0 +1,44 @@
+<app-menu></app-menu>
+<div class='component-content'>
+    <div>
+        <span class='component-title'>[{{title}}]</span>
+        <span><a routerLink='/pr/create'><img id='createnew' width='20' height='20' src='assets/add-icon.png'
+          title='Add New'></a></span>
+    </div>
+    <p *ngIf='!purchaseRequest'>Loading...</p>
+    <div *ngIf='purchaseRequest'>
+
+        <div class="form-group row">
+            <label class='col-form-label col-sm-2' for="user">User:</label>
+            <div class='col-sm-6 select-list'>
+                <select [(ngModel)]='purchaseRequest.user.id' [compareWith]='compareFn' class='form-control' name='User' id='purchaseRequest-User'>
+          <option *ngFor="let user of users" [ngValue]="user.id" [selected]="user.id == purchaseRequest.user.id">
+            {{purchaseRequest.user.firstName}} {{purchaseRequest.user.lastName}}</option>
+        </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class='col-form-label col-sm-2' for="description">Description:</label>
+            <input [(ngModel)]='purchaseRequest.description' name='Description' type="text" class="form-control col-sm-6" id="description" aria-describedby="descHelp" placeholder="Description">
+            <small id="descHelp" class="form-text text-muted col-sm-2">Description</small>
+        </div>
+        <div class="form-group row">
+            <label class='col-form-label col-sm-2' for="justification">Justification:</label>
+            <input [(ngModel)]='purchaseRequest.justification' name='Justification' type="text" class="form-control col-sm-6" id="justification" aria-describedby="justHelp" placeholder="Justification">
+            <small id="justHelp" class="form-text text-muted col-sm-2">Justification</small>
+        </div>
+        <div class="form-group row">
+            <label class='col-form-label col-sm-2' for="dateNeeded">Date Needed:</label>
+            <input [(ngModel)]='purchaseRequest.dateNeeded' name='dateNeeded' type="dateNeeded" class="form-control col-sm-6" id="dateNeeded" aria-describedby="dnHelp" placeholder="Date Needed">
+            <small id="dnHelp" class="form-text text-muted col-sm-2">Date Needed</small>
+        </div>
+        <div class="form-group row">
+            <label class='col-form-label col-sm-2' for="deliveryMode">Delivery Mode:</label>
+            <input [(ngModel)]='purchaseRequest.deliveryMode' name='deliveryMode' type="text" class="form-control col-sm-6" id="deliveryMode" aria-describedby="dmHelp" placeholder="deliveryMode">
+            <small id="dmHelp" class="form-text text-muted col-sm-2">Delivery Mode</small>
+        </div>
+        <div class='form-group'>
+            <button (click)='edit()' class='btn btn-primary'>Update</button>
+        </div>
+    </div>
+</div>

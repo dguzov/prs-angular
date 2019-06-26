@@ -1,0 +1,55 @@
+<app-menu></app-menu>
+<div class='component-content'>
+    <div class='lefthalf'>
+        <span class='component-title'>[{{title}}]</span>
+    </div>
+    <table class="table table-sm" *ngIf='vendor'>
+        <tr>
+            <td>Id</td>
+            <td>{{ vendor.id}}</td>
+        </tr>
+        <tr>
+            <td>Code</td>
+            <td>{{ vendor.code }}</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>{{ vendor.name }}</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>{{vendor.address}}, {{vendor.city}}, {{vendor.state}}, {{vendor.zip}}</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>{{ vendor.phoneNumber }}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{ vendor.email }}</td>
+        </tr>
+        <tr>
+            <td>PreApproved</td>
+            <td>{{ vendor.preApproved }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <a routerLink='/vendor/edit/{{vendor.id}}' class='btn btn-primary' title='Edit'>Edit</a>
+                <button (click)="remove()" class='btn btn-danger' title='Delete'>Remove</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<tr *ngFor='let vendor of vendors'>
+    <td>{{vendor.id}}</td>
+    <td>{{vendor.code}}</td>
+    <td>{{vendor.name}}</td>
+    <td>{{vendor.address}}, {{vendor.city}}, {{vendor.state}}, {{vendor.zip}}</td>
+    <td>{{vendor.phoneNumber}}</td>
+    <td>{{vendor.email}}</td>
+    <td>{{vendor.preApproved}}</td>
+    <td class='actions'>
+        <a routerLink='/vendor/detail/{{vendor.id}}'><img src='assets/details.png' width='20' height='20' title='Detail'></a>
+        <a routerLink='/vendor/edit/{{vendor.id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
+    </td>

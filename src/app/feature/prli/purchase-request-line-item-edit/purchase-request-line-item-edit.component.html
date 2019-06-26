@@ -1,0 +1,32 @@
+<app-menu></app-menu>
+<div class='component-content'>
+    <div class='lefhalf'>
+        <span class="component-title">{{title}} | </span>
+        <span *ngIf='purchaseRequestLineItem'>
+          <a routerLink="/pr/lines/{{purchaseRequestLineItem.purchaseRequest.id}}" 
+          title='Back to PurchaseRequest Lines'>Back to List</a>
+        </span>
+    </div>
+</div>
+
+<div *ngIf='purchaseRequestLineItem' class='form-group row'>
+    <label class='col-form-label col-sm-2' for="prli-product">Product:</label>
+    <div class='col-sm-6 select-list'>
+        <select [(ngModel)]='purchaseRequestLineItem.product.id' [compareWith]='compareFn' class='form-control' name='Product' id='prli-product'>
+        <option *ngFor="let product of products" [ngValue]="product.id"
+        [selected]="product.id == purchaseRequestLineItem.product.id">
+    {{product.name}}</option>
+        </select>
+    </div>
+</div>
+
+<div *ngIf='purchaseRequestLineItem' class='form-group row'>
+    <label class='col-form-label col-sm-2' for="quantity">Quantity:</label>
+    <input [(ngModel)]='purchaseRequestLineItem.quantity' name='Quantity' type="text" class="form-control col-sm-6" id="quantity" aria-describedby="qHelp" placeholder="Quantity">
+    <small id="qHelp" class="form-text text-muted col-sm-2">The Quantity</small>
+</div>
+
+<div class='form-group'>
+    <button (click)='edit()' class='btn btn-primary'>Change</button>
+    <button (click)='remove()' class='btn btn-danger' title='Delete'>Remove</button>
+</div>

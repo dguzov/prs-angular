@@ -1,0 +1,54 @@
+<app-menu></app-menu>
+<div class='component-content'>
+    <div class='lefthalf'>
+        <span class='component-title'>[{{title}}]</span>
+    </div>
+    <table class="table table-sm" *ngIf='product'>
+        <tr>
+            <td>Product ID</td>
+            <td>{{ product.id}}</td>
+        </tr>
+        <tr>
+            <td>Vendor Name</td>
+            <td>{{ product.vendor.name }}</td>
+        </tr>
+        <tr>
+            <td>Vendor Address</td>
+            <td>{{ product.vendor.address }}, {{ product.vendor.city }}, {{ product.vendor.state }}, {{ product.vendor.zip }}</td>
+        </tr>
+        <tr>
+            <td>Vendor Phone Number</td>
+            <td>{{ product.vendor.phoneNumber }}</td>
+        </tr>
+        <tr>
+            <td>Vendor Email</td>
+            <td>{{ product.vendor.email }}</td>
+        </tr>
+        <tr>
+            <td>Product Part Number</td>
+            <td>{{ product.partNumber }}</td>
+        </tr>
+        <tr>
+            <td>Product Name</td>
+            <td>{{ product.name }}</td>
+        </tr>
+        <tr>
+            <td>Product Price</td>
+            <td>{{ product.price }}</td>
+        </tr>
+        <tr>
+            <td>Unit</td>
+            <td>{{ product.unit }}</td>
+        </tr>
+        <tr>
+            <td>Photo Path</td>
+            <td>{{ product.photoPath }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <a routerLink='/product/edit/{{product.id}}' class='btn btn-primary' title='Edit'>Edit</a>
+                <button (click)="remove()" class='btn btn-danger' title='Delete'>Remove</button>
+            </td>
+        </tr>
+    </table>
+</div>

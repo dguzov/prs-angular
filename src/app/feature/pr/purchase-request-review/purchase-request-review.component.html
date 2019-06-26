@@ -1,0 +1,29 @@
+<app-menu></app-menu>
+<div class='component-content'>
+    <div class='lefhalf'>
+        <span>[PurchaseRequest Review]</span>
+    </div>
+</div>
+<p *ngIf='!purchaseRequests'>User not logged in.</p>
+<table class="table table-sm" *ngIf='purchaseRequests'>
+    <tr>
+        <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold" (click)="sortBy(id)"><u>Id</u></a></th>
+        <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>User Name</u></a></th>
+        <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Description</u></a></th>
+        <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Status</u></a></th>
+        <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Total</u></a></th>
+        <th class="table-secondary btn-link">Action</th>
+    </tr>
+
+    <tr *ngFor='let purchaseRequest of purchaseRequests'>
+        <td>{{purchaseRequest.id}}</td>
+        <td>{{purchaseRequest.user.userName}}</td>
+        <td>{{purchaseRequest.description}}</td>
+        <td>{{purchaseRequest.status}}</td>
+        <td>{{purchaseRequest.total}}</td>
+        <td class='actions'>
+            <a routerLink='/pr/approve/{{purchaseRequest.id}}'><img src='assets/review.png' width='20' height='20' title='Detail'></a>
+        </td>
+    </tr>
+
+</table>
